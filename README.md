@@ -8,6 +8,7 @@
 - [Totem Colégios](https://github.com/orgs/CompAct-Jr/projects/10/views/1?system_template=kanban)
 - [Totem Vestibulares](https://github.com/orgs/CompAct-Jr/projects/11/views/1?system_template=kanban)
 - [Totem ON](https://github.com/orgs/CompAct-Jr/projects/12)
+- [Portal de Entrada](https://github.com/orgs/CompAct-Jr/projects/8)
 
 ## Módulos
 
