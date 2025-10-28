@@ -10,7 +10,8 @@
 - [Totem ON](https://github.com/orgs/CompAct-Jr/projects/12)
 - [Portal de Entrada](https://github.com/orgs/CompAct-Jr/projects/8)
 
-## Módulos
+## Capacitação de Wordpress
+- [Acesse Aqui](capacitacao.md)
 
 
 ## Links Disponíveis:
