@@ -10,9 +10,11 @@
 - [Totem ON](https://github.com/orgs/CompAct-Jr/projects/12)
 - [Portal de Entrada](https://github.com/orgs/CompAct-Jr/projects/8)
 
-## Capacitação de Wordpress
-- [Acesse Aqui](capacitacao.md)
-
+## Acesso Rápido aos projetos em desenvolvimentos:
+- [totem colegios](https://totemcolegios.compactjr.com/)
+- [totem vestibulares](https://totemvestibulares.compactjr.com/)
+- [totem on](https://totenon.compactjr.com/)
+- [portal de entrada](https://totementrada.compactjr.com/)
 
 ## Links Disponíveis:
 
