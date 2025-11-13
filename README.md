@@ -9,6 +9,7 @@
 - [Totem Vestibulares](https://github.com/orgs/CompAct-Jr/projects/11/views/1?system_template=kanban)
 - [Totem ON](https://github.com/orgs/CompAct-Jr/projects/12)
 - [Portal de Entrada](https://github.com/orgs/CompAct-Jr/projects/8)
+- [Prototipação da Totem](https://github.com/orgs/CompAct-Jr/projects/14)
 
 ## Acesso Rápido aos projetos em desenvolvimentos:
 - [totem colegios](https://totemcolegios.compactjr.com/)
