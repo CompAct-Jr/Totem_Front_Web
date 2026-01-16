@@ -1,25 +1,42 @@
-# Projeto_Totem
+# ./
 
-> **Repositório para o Kanbam do projeto Totem**
-> União dos portais Totem Vestibulares, Totem ON e Totem Colégios apartir de um Portal de entrada
+This template should help get you started developing with Vue 3 in Vite.
 
-## Acesso Rápido ao kanban e projetos
+## Recommended IDE Setup
 
-- [Totem Colégios](https://github.com/orgs/CompAct-Jr/projects/10/views/1?system_template=kanban)
-- [Totem Vestibulares](https://github.com/orgs/CompAct-Jr/projects/11/views/1?system_template=kanban)
-- [Totem ON](https://github.com/orgs/CompAct-Jr/projects/12)
-- [Portal de Entrada](https://github.com/orgs/CompAct-Jr/projects/8)
-- [Prototipação da Totem](https://github.com/orgs/CompAct-Jr/projects/14)
+[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-## Acesso Rápido aos projetos em desenvolvimentos:
-- [totem colegios](https://totemcolegios.compactjr.com/)
-- [totem vestibulares](https://totemvestibulares.compactjr.com/)
-- [totem on](https://totenon.compactjr.com/)
-- [portal de entrada](https://totementrada.compactjr.com/)
+## Recommended Browser Setup
 
-## Links Disponíveis:
+- Chromium-based browsers (Chrome, Edge, Brave, etc.):
+  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
+  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
+- Firefox:
+  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
+  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
 
-- [Link Para o TAP](https://docs.google.com/document/d/1acvfr8jBydJHqEL4vaxG9yVGrXho-rvCF7BLSigxeyU/edit?usp=sharing)
+## Type Support for `.vue` Imports in TS
 
-- [Link Para o Figma](https://www.figma.com/design/iMU8JKQ8Rskvi5KmocOsWo/Totem?node-id=0-1&t=rnuCcsoc0E7U98Qd-1)
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
 
+## Customize configuration
+
+See [Vite Configuration Reference](https://vite.dev/config/).
+
+## Project Setup
+
+```sh
+npm install
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
+```
+
+### Type-Check, Compile and Minify for Production
+
+```sh
+npm run build
+```
