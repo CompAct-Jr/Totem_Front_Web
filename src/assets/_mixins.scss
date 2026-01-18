@@ -1,0 +1,14 @@
+@mixin centralizar_flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin criar_botao($cor, $cor_back, $font_size: 1rem, $raio: 8px) {
+    background-color: $cor_back;
+    color: $cor;
+    border-radius: $raio;
+    padding: 8px;
+    font-size: $font_size;
+    @include centralizar_flex();
+}
