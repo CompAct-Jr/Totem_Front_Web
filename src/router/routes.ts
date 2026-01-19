@@ -1,4 +1,4 @@
-import App from '@/App.vue'
+import Home from '@/views/home/Home.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -6,7 +6,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: App,
+      component: Home,
       children: [
         {
           path:'',

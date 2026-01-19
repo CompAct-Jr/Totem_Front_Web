@@ -2,6 +2,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+}
+
+@mixin around_flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@mixin between_flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 @mixin criar_botao($cor, $cor_back, $font_size: 1rem, $raio: 8px) {
@@ -10,5 +25,11 @@
     border-radius: $raio;
     padding: 8px;
     font-size: $font_size;
-    @include centralizar_flex();
+    cursor: pointer;
+}
+
+@mixin fixar_elemento($top: 0px, $right: 0px, $z_index){
+    top: $top;
+    right: $right;
+    z-index: $z_index;
 }
