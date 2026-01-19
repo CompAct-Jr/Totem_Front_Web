@@ -1,15 +1,19 @@
 import { defineStore } from 'pinia';
 import { TesteEstado } from '@/types/Estado';
 import { TesteStorageService } from '@/services/TesteStorageService';
+import type { Usuario } from '@/types/Usuario';
+import { UsuarioService } from '@/services/UsuarioService';
 
 interface State{
   estado: TesteEstado;
+  usuario: Usuario | null;
 }
 
 export const useTestStore = defineStore('teste', {
   state: (): State => {
     return {
-      estado: TesteStorageService.carregar()
+      estado: TesteStorageService.carregar(),
+      usuario: UsuarioService.carregar(),
     }
   },
 

@@ -16,4 +16,5 @@ export class TesteStorageService{
   static limpar() {
     localStorage.removeItem(STORAGE_KEY)
   }
+
 }

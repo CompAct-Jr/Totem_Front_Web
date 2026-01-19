@@ -5,35 +5,38 @@
 </template>
 
 <script lang="ts">
-    
+
 </script>
 
 <style lang="scss">
-    @import '/src/assets/mixins';
-    @import '/src/assets/variables';
-    .info{
-        @include centralizar_flex;
-        width: 80%;
-        min-height: 30vh;
-        padding: 8px;
-        border: solid 2px $primary_3;
-        border-radius: 16px;
-        background-color: $primary_2;
-        box-shadow: $primary_3 0 0 10px;
-        color: $primary_3;
+@import '/src/assets/mixins';
+@import '/src/assets/variables';
 
-        h2, h3, h4, p{
-            width: 100%;
-            text-align: center;
-        }
+.info {
+    @include centralizar_flex;
+    width: 80%;
+    min-height: 30vh;
+    padding: 8px;
+    border: solid 2px $primary_3;
+    border-radius: 16px;
+    background-color: $primary_2;
+    box-shadow: $primary_3 0 0 10px;
+    color: $primary_3;
 
-        transition: 
-            scale 0.3s ease-in,
-            box-shadow 0.3s ease-in;
-
-        &:hover{
-            scale: 1.01;
-            box-shadow: $primary_3 0 0 20px;
-        }
+    h2,
+    h3,
+    h4,
+    p {
+        width: 100%;
+        text-align: center;
     }
+
+    transition: scale 0.3s ease-in,
+    box-shadow 0.3s ease-in;
+
+    &:hover {
+        scale: 1.01;
+        box-shadow: $primary_3 0 0 20px;
+    }
+}
 </style>
