@@ -2,14 +2,17 @@
     <Transition name="fade" appear>
         <InfoBox v-if="estado === TesteEstado.CADASTRO">
             <h2>Encontre sua vocação. Comece sua jornada aqui.</h2>
-            <button class="play_btn" @click="iniciarTeste()">
+            <button class="play_btn" @click="abrirModalCadastro()">
                 <span>Começar Agora</span>
                 <img src="/public/i_play.png" alt="botao de começar">
             </button>
         </InfoBox>
     </Transition>
-    
-    <Modal/>
+
+    <Transition name="fade" appear>
+        <Modal :is-active="isModalActive" @close="closeModal()"/>
+    </Transition>
+
 </template>
 
 <script setup lang="ts">
@@ -19,12 +22,19 @@ import Modal from '@/components/Modal.vue';
 import { storeToRefs } from 'pinia';
 import { TesteEstado } from '@/types/Estado';
 import { useTestStore } from '@/stores/Teste';
+import { ref } from 'vue';
 
 const testeStore = useTestStore();
 const { estado } = storeToRefs(testeStore);
 
-const iniciarTeste = ()=>{
-    testeStore.iniciar();
+const abrirModalCadastro = ()=>{
+    isModalActive.value= true;
+}
+
+const isModalActive = ref(true);
+
+const closeModal = ()=>{
+    isModalActive.value = false;
 }
 
 </script>
@@ -40,7 +50,7 @@ const iniciarTeste = ()=>{
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 2s ease;
+  transition: opacity 0.5s ease;
 }
 
 .fade-enter-from,

@@ -39,14 +39,8 @@ const { estado } = storeToRefs(testeStore);
 
 
     div {
-        padding: 12px 8px;
+        @include criar_botao($primary_4, $primary_1, 1.2rem, 16px);
         width: 10%;
-        border-radius: 12px;
-        text-align: center;
-        font-weight: 600;
-
-        background-color: $primary_1;
-        color: $primary_4;
         opacity: 0.5;
 
         transition:
