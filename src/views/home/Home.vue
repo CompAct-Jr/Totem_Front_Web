@@ -25,6 +25,7 @@
                 v-if="estado === TesteEstado.CADASTRO"
                 @submit_user="handleSubmitUser($event)"
             />
+            <!-- loop de todas as perguntas com estado salvo-->
         </Modal>
     </Transition>
 
@@ -46,7 +47,7 @@ import i_play from '@/images/i_play.png';
 import type { Usuario } from '@/types/Usuario';
 
 const testeStore = useTestStore();
-const { estado, usuario } = storeToRefs(testeStore);
+const { estado, usuario, questions, analysis} = storeToRefs(testeStore);
 
 const abrirModalCadastro = ()=>{
     isModalActive.value= true;
