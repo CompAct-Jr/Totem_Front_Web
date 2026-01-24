@@ -9,8 +9,7 @@
 </script>
 
 <style lang="scss">
-@import '/src/assets/mixins';
-@import '/src/assets/variables';
+@use '@/assets/index' as *;
 
 .info {
     @include centralizar_flex;

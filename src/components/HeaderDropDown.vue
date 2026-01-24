@@ -1,13 +1,13 @@
 <template>
   <nav class="navHeader" :class="{ hidden: !menuAberto }">
     <div class="logo">
-      <img src="/public/logo.png" alt="" />
+      <img :src="logomarca" alt="" />
       <span>TOTEM Vocacional</span>
     </div>
 
     <div class="menu" @click.self="toggleOpcoes()">
       <span>Menu</span>
-      <img src="/public/icon_menu.png" alt="" @click.self="toggleOpcoes()" />
+      <img :src="iconMenu" alt="" @click.self="toggleOpcoes()" />
 
       <div class="opcoes" :class="{ hidden: !opcoesAberta }">
         <button class="btn-exit" @click="sair()">Sair</button>
@@ -25,10 +25,14 @@
 import { useTestStore } from '@/stores/Teste';
 import { onMounted, ref } from 'vue';
 
+import logomarca from '@/images/logo.png';
+import iconMenu from '@/images/icon_menu.png'; 
+
 const testeStore = useTestStore();
 
 const menuAberto = ref(false);
 const opcoesAberta = ref(false);
+
 
 const toggleMenu = () => {
   menuAberto.value = !menuAberto.value;
@@ -56,8 +60,11 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-@import '/src/assets/variables';
-@import '/src/assets/mixins';
+@use '@/assets/index' as *;
+
+$logomarca: '/images/logo.png';
+$iconMenu: '/images/icon_menu.png';
+
 
 .navHeader {
   width: 100%;

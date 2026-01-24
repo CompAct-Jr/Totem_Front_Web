@@ -22,8 +22,7 @@ const { estado } = storeToRefs(testeStore);
 </script>
 
 <style lang="scss">
-@import '/src/assets/variables';
-@import '/src/assets/mixins';
+@use '@/assets/index' as *;
 
 .footer {
     width: 100%;

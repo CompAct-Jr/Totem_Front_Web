@@ -1,15 +1,23 @@
 <template>
     <div class="overlay" v-if="isActive">
         <div class="modal">
-            <button class="close_btn" @click="close()">Close</button>
+            <div width="100%">
+                <button class="close_btn" @click="close()">
+                   
+                </button>
+            </div>
+            
             <slot>
                 
             </slot>
         </div>
+         <image :src="exit" alt="sair" width="24px" height="24px"/>
     </div>
 </template>
 
 <script setup lang="ts">
+    import exit from '@/images/i_exit.png';
+
     defineProps({isActive : Boolean});
 
     const emit = defineEmits(['close']);
@@ -25,8 +33,8 @@
 </script>
 
 <style lang="scss">
-    @import '../assets/_variables.scss';
-    @import '../assets/mixins';
+
+    @use '@/assets/index' as *;
 
     .overlay{
         background-color: $primary_8;
@@ -44,11 +52,16 @@
             background-color: $primary_2;
             border-radius: 16px;
             z-index: 60;
-            padding: 8px;
+            padding: 8px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
 
            .close_btn{
                 @include criar_botao($primary_2, $primary_6, 1.1rem);
                 float: right;
+                width: 10%;
+                height: 32px;
                 transition: scale ease 0.4s;
                 &:hover{
                     scale: 1.05;
