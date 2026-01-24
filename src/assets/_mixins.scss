@@ -35,3 +35,15 @@
     right: $right;
     z-index: $z_index;
 }
+
+@mixin form_input($cor_borda){
+    border-radius: 8px;
+    width: 100%;
+    border: solid $cor_borda 1px;
+    border-radius: 4px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}

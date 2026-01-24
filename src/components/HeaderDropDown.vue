@@ -2,7 +2,7 @@
   <nav class="navHeader" :class="{ hidden: !menuAberto }">
     <div class="logo">
       <img :src="logomarca" alt="" />
-      <span>TOTEM Vocacional</span>
+      <span>TOTEM VOCACIONAL</span>
     </div>
 
     <div class="menu" @click.self="toggleOpcoes()">
@@ -10,7 +10,7 @@
       <img :src="iconMenu" alt="" @click.self="toggleOpcoes()" />
 
       <div class="opcoes" :class="{ hidden: !opcoesAberta }">
-        <button class="btn-exit" @click="sair()">Sair</button>
+        <button class="btn-exit" @click="resetar()">Resetar</button>
         <button class="btn-save" @click="salvar()">Salvar</button>
       </div>
     </div>
@@ -26,9 +26,12 @@ import { useTestStore } from '@/stores/Teste';
 import { onMounted, ref } from 'vue';
 
 import logomarca from '@/images/logo.png';
-import iconMenu from '@/images/icon_menu.png'; 
+import iconMenu from '@/images/icon_menu.png';
+
+import { storeToRefs } from 'pinia';
 
 const testeStore = useTestStore();
+const {estado, usuario} = storeToRefs(testeStore)
 
 const menuAberto = ref(false);
 const opcoesAberta = ref(false);
@@ -43,9 +46,10 @@ const toggleOpcoes = () => {
   opcoesAberta.value = !opcoesAberta.value;
 }
 
-const sair = () => {
-  alert('tem certeza? seu progresso não será salvo');
+const resetar = () => {
+  alert('tem certeza?');
   testeStore.resetar();
+  testeStore.removerUsuario;
 }
 
 const salvar = () => {
@@ -64,7 +68,6 @@ onMounted(() => {
 
 $logomarca: '/images/logo.png';
 $iconMenu: '/images/icon_menu.png';
-
 
 .navHeader {
   width: 100%;

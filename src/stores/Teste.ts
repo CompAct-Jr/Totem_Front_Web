@@ -31,6 +31,15 @@ export const useTestStore = defineStore('teste', {
     resetar(){
       this.estado = TesteEstado.CADASTRO;
       TesteStorageService.salvar(this.estado);
+    },
+
+    salvarUsuario(u: Usuario | null){
+      this.usuario = u;
+      UsuarioService.salvar(this.usuario);
+    },
+
+    removerUsuario(){
+      UsuarioService.limpar();
     }
   }
 })
