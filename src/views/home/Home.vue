@@ -20,12 +20,14 @@
     </Transition>
 
     <Transition name="fade" appear>
-        <Modal :is-active="isModalActive" @close="closeModal()">
-            <Form 
-                v-if="estado === TesteEstado.CADASTRO"
-                @submit_user="handleSubmitUser($event)"
-            />
-            <!-- loop de todas as perguntas com estado salvo-->
+        <Modal :is-active="isModalActive && estado === TesteEstado.CADASTRO" @close="closeModal()">
+            <Form @submit_user="handleSubmitUser($event)" />
+        </Modal>
+    </Transition>
+
+    <Transition name="fade" appear>
+        <Modal :is-active="estado === TesteEstado.PERGUNTAS">
+
         </Modal>
     </Transition>
 
