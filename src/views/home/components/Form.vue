@@ -66,7 +66,7 @@
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @use '@/assets/index.scss' as *;
 
 h2{

@@ -27,7 +27,7 @@
 
     <Transition name="fade" appear>
         <Modal :is-active="estado === TesteEstado.PERGUNTAS">
-
+            <Question></Question>
         </Modal>
     </Transition>
 
@@ -47,6 +47,7 @@ import type { FormUser } from '@/types/FormUser';
 
 import i_play from '@/images/i_play.png';
 import type { Usuario } from '@/types/Usuario';
+import Question from './components/Question.vue';
 
 const testeStore = useTestStore();
 const { estado, usuario, questions, analysis} = storeToRefs(testeStore);
@@ -86,7 +87,7 @@ const closeOpenModal = ()=>{
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @use '@/assets/index.scss' as *;
 
 .play_btn{
@@ -98,11 +99,13 @@ const closeOpenModal = ()=>{
     }
 }
 
+h2{
+    font-size: 1.8rem;
+}
+
 .info_modal{
     text-align: center;
-    border: solid 2px $primary_3;
-    padding: 8px;
-    border-radius: 8px;
     color: $primary_7;
+    font-size: 1.3rem;
 }
 </style>

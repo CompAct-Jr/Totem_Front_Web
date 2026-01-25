@@ -4,7 +4,7 @@ import { TesteStorageService } from '@/services/TesteStorageService';
 import type { Usuario } from '@/types/Usuario';
 import { UsuarioService } from '@/services/UsuarioService';
 import type { Questions } from '@/types/Questions';
-import type { Analysis } from '@/types/Analysis';
+import type { Analysis, AnalysisEnum } from '@/types/Analysis';
 import { QuestionsService } from '@/services/QuestionsService';
 import { AnalysisService } from '@/services/AnalysisService';
 
@@ -13,6 +13,8 @@ interface State{
   usuario: Usuario | null;
   questions: Questions[];
   analysis: Analysis[];
+  currentId: number;
+  responses: Record<number, AnalysisEnum[]>
 }
 
 export const useTestStore = defineStore('teste', {
@@ -21,7 +23,9 @@ export const useTestStore = defineStore('teste', {
       estado: TesteStorageService.carregar(),
       usuario: UsuarioService.carregar(),
       questions: QuestionsService.carregar(),
-      analysis: AnalysisService.carregar()
+      analysis: AnalysisService.carregar(),
+      currentId: 1,
+      responses: {} as Record<number, AnalysisEnum[]>
     }
   },
 
