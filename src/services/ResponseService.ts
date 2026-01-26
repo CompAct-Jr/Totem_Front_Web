@@ -10,11 +10,11 @@ export class ResponseService {
     return data ? JSON.parse(data) : [];
   }
 
-  static salvar(responses: Response[]) {
+  static salvar(responses: Response[]): void {
     localStorage.setItem(RESPONSE_KEY, JSON.stringify(responses));
   }
 
-  static push(id: number, idQuestion: number, resp: AnalysisEnum[]) {
+  static push(id: number, idQuestion: number, resp: AnalysisEnum[]): void {
      const responses = this.carregar();
 
     const index = responses.findIndex(r => r.idQuestion === idQuestion);
@@ -36,7 +36,29 @@ export class ResponseService {
     return this.carregar().length + 1;
   }
 
-  static limpar() {
+  static limpar(): void {
     localStorage.removeItem(RESPONSE_KEY);
   }
+
+  static getResponseCalculed(): Record<AnalysisEnum, number> {
+    const responses = this.carregar();
+
+    const result: Record<AnalysisEnum, number> = {
+      INVESTIGATIVO: 0,
+      ARTÍSTICO: 0,
+      SOCIAL: 0,
+      REALISTA: 0,
+      EMPREENDEDOR: 0,
+      CONVENCIONAL: 0
+    };
+
+    responses.forEach(r => {
+      r.responses.forEach(enumValue => {
+        result[enumValue]++;
+      });
+    });
+
+    return result;
+}
+
 }

@@ -27,7 +27,14 @@
 
     <Transition name="fade" appear>
         <Modal :is-active="estado === TesteEstado.PERGUNTAS">
-            <Question></Question>
+            <Question/>
+        </Modal>
+    </Transition>
+
+    <Transition name="fade" appear>
+        <Modal :is-active="estado === TesteEstado.FINALIZADO">
+            <p class="info_modal">Resultado Do Seu Teste</p>
+            <RadarChart/>
         </Modal>
     </Transition>
 
@@ -48,9 +55,11 @@ import type { FormUser } from '@/types/FormUser';
 import i_play from '@/images/i_play.png';
 import type { Usuario } from '@/types/Usuario';
 import Question from './components/Question.vue';
+import Chart from './components/RadarChart.vue';
+import RadarChart from './components/RadarChart.vue';
 
 const testeStore = useTestStore();
-const { estado, usuario, questions, analysis} = storeToRefs(testeStore);
+const { estado } = storeToRefs(testeStore);
 
 const abrirModalCadastro = ()=>{
     isModalActive.value= true;

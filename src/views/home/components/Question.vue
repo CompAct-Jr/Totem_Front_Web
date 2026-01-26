@@ -3,7 +3,7 @@
         <span class="id_question">{{ question?.id }}</span>
         <h4>{{ question?.titulo }}</h4>
 
-        <form class="form_question" @submit.prevent="handleSubmitForm()">
+        <form class="form_question" @submit.prevent="submitFormFinal()">
             <label v-for="option in question?.opcoes" :key="option.id" class="option">
                 <input type="checkbox" 
                     :checked="isCheckd(option.analysisEnum)"
@@ -15,8 +15,31 @@
                 </span>
             </label>
             <div>
-                <button type="button" class="exit_btn" @click="handleRetry()">Voltar</button>
-                <button type="submit" class="play_btn">Seguir</button>
+                <button 
+                    type="button"
+                    class="exit_btn"
+                    @click="handleRetry()"
+                    v-if="currentId !== 1"
+                >
+                    Voltar
+                </button>
+
+                <button 
+                    type="button"
+                    class="play_btn"
+                    @click="handleSubmitForm()"
+                    v-if="currentId !== questions.length"
+                >
+                    Seguir
+                </button>
+
+                <button 
+                    type="submit"
+                    class="play_btn"
+                    v-if="currentId === questions.length"
+                >
+                    Finalizar
+                </button>
             </div>
         </form>
 
@@ -45,7 +68,6 @@ const isDisabled = (value: AnalysisEnum): boolean => {
   return ( response.value.length >= 2 && !response.value.includes(value))
 }
 
-
 const toggleOption = (value: AnalysisEnum) => {
   testStore.toggleResposta(currentId.value, value)
 }
@@ -60,9 +82,12 @@ const handleSubmitForm = () => {
   }
 }
 
-
-const handleRetry = ()=>{
+const handleRetry = () => {
     testStore.voltar();
+}
+
+const submitFormFinal = () => {
+    testStore.finalizar();
 }
 
 </script>
