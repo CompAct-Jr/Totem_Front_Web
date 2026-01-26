@@ -7,6 +7,8 @@ import type { Questions } from '@/types/Questions';
 import type { Analysis, AnalysisEnum } from '@/types/Analysis';
 import { QuestionsService } from '@/services/QuestionsService';
 import { AnalysisService } from '@/services/AnalysisService';
+import { ResponseService } from '@/services/ResponseService';
+import type { Response } from '@/types/Response';
 
 interface State{
   estado: TesteEstado;
@@ -14,7 +16,7 @@ interface State{
   questions: Questions[];
   analysis: Analysis[];
   currentId: number;
-  responses: Record<number, AnalysisEnum[]>
+  responses:  Response[];
 }
 
 export const useTestStore = defineStore('teste', {
@@ -24,8 +26,8 @@ export const useTestStore = defineStore('teste', {
       usuario: UsuarioService.carregar(),
       questions: QuestionsService.carregar(),
       analysis: AnalysisService.carregar(),
-      currentId: 1,
-      responses: {} as Record<number, AnalysisEnum[]>
+      currentId: ResponseService.getCurrentId(),
+      responses: ResponseService.carregar()
     }
   },
 
@@ -43,6 +45,10 @@ export const useTestStore = defineStore('teste', {
     resetar(){
       this.estado = TesteEstado.CADASTRO;
       TesteStorageService.salvar(this.estado);
+      UsuarioService.limpar()
+      ResponseService.limpar()
+      this.responses = []
+      this.currentId = 1;
     },
 
     salvarUsuario(u: Usuario | null){
@@ -52,6 +58,41 @@ export const useTestStore = defineStore('teste', {
 
     removerUsuario(){
       UsuarioService.limpar();
+    },
+
+    toggleResposta(idQuestion: number, value: AnalysisEnum) {
+      let r = this.responses.find(r => r.idQuestion === idQuestion)
+
+      if (!r) {
+        r = {
+          id: idQuestion,
+          idQuestion,
+          responses: []
+        }
+        this.responses.push(r)
+      }
+
+      if (r.responses.includes(value)) {
+        r.responses = r.responses.filter(v => v !== value)
+      } else {
+        if (r.responses.length < 2) {
+          r.responses.push(value)
+        }
+      }
+
+      ResponseService.salvar(this.responses)
+    },
+
+    voltar(){
+      this.currentId = (this.currentId === 1)
+        ? 1
+        : this.currentId - 1;
+    },
+
+    avancar(){
+      this.currentId = (this.currentId === this.questions.length)
+        ? this.questions.length
+        : this.currentId + 1;
     }
   }
 })

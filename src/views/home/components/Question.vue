@@ -5,14 +5,17 @@
 
         <form class="form_question" @submit.prevent="handleSubmitForm()">
             <label v-for="option in question?.opcoes" :key="option.id" class="option">
-                <input type="checkbox" :checked="isCheckd(option.analysisEnum)"
-                    @change="toggleOption(option.analysisEnum)" />
+                <input type="checkbox" 
+                    :checked="isCheckd(option.analysisEnum)"
+                    :disabled="isDisabled(option.analysisEnum)"
+                    @change="toggleOption(option.analysisEnum)" 
+                />
                 <span>
                     {{ option.text }}
                 </span>
             </label>
             <div>
-                <button type="submit" class="exit_btn">Voltar</button>
+                <button type="button" class="exit_btn" @click="handleRetry()">Voltar</button>
                 <button type="submit" class="play_btn">Seguir</button>
             </div>
         </form>
@@ -24,29 +27,42 @@
 import { useTestStore } from '@/stores/Teste';
 import type { AnalysisEnum } from '@/types/Analysis';
 import { storeToRefs } from 'pinia';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 
 const testStore = useTestStore();
-const {
-    estado,
-    usuario,
-    questions,
-    analysis,
-    currentId
-} = storeToRefs(testStore)
+
+const { questions, currentId, responses } = storeToRefs(testStore)
 
 const question = computed(() => { return questions.value[currentId.value - 1] });
 
-const isCheckd = (response: AnalysisEnum): boolean => {
-    return false;
+const response = computed(() => { return responses.value[currentId.value -1]?.responses || [] });
+
+const isCheckd = (value: AnalysisEnum): boolean => {
+     return response.value.includes(value);
 }
 
-const toggleOption = (response: AnalysisEnum) => {
+const isDisabled = (value: AnalysisEnum): boolean => {
+  return ( response.value.length >= 2 && !response.value.includes(value))
+}
 
+
+const toggleOption = (value: AnalysisEnum) => {
+  testStore.toggleResposta(currentId.value, value)
 }
 
 const handleSubmitForm = () => {
+  if (response.value.length !== 2) {
+    alert("necessário marcar 2 campos para resposta");
+    return;
+  }
+  else{
+    testStore.avancar();
+  }
+}
 
+
+const handleRetry = ()=>{
+    testStore.voltar();
 }
 
 </script>
