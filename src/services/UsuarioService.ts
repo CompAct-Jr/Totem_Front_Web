@@ -3,7 +3,7 @@ import type { Usuario } from "@/types/Usuario";
 const USUARIO_KEY = 'teste_usuario'
 
 export class UsuarioService{
-    static salvar(u: Usuario){
+    static salvar(u: Usuario | null){
         localStorage.setItem(USUARIO_KEY, JSON.stringify(u));
     }
 

@@ -1,7 +1,7 @@
-export interface Usuario {
+export  interface FormUser{
   nome: string
   email: string
+  celular: string
   cidade: string
-  whatsapp: string
   idade: number
 }

@@ -9,16 +9,16 @@
 </script>
 
 <style lang="scss">
-@import '/src/assets/mixins';
-@import '/src/assets/variables';
+@use '@/assets/index' as *;
 
 .info {
     @include centralizar_flex;
     width: 80%;
     min-height: 30vh;
-    padding: 8px;
+    padding: 16px;
     border: solid 2px $primary_3;
     border-radius: 16px;
+    gap: 16px;
     background-color: $primary_2;
     box-shadow: $primary_3 0 0 10px;
     color: $primary_3;
