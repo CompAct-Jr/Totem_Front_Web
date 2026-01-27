@@ -1,4 +1,3 @@
-import Home from '@/views/home/Home.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -6,19 +5,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: Home,
-      children: [
-        {
-          path:'',
-          name: 'home',
-          component: ()=> import('@/views/home/Home.vue')
-        },
-        {
-          path:'dash',
-          name: 'dash',
-          component: ()=> import('@/views/dashboard/DashBoard.vue')
-        }
-      ]
+      component: ()=> import('@/views/home/Home.vue')
     }
   ],
 })
