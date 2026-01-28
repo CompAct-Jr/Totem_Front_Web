@@ -1,49 +1,35 @@
 <template>
-    <div class="question">
-        <span class="id_question">{{ question?.id }}</span>
-        <h4>{{ question?.titulo }}</h4>
+    <Transition name="fade" mode="out-in" appear>
+        <div class="question" v-if="openQuestion" :class="{ hidden: !openQuestion }">
+            <span class="id_question">{{ question?.id }}</span>
+            <h4>{{ question?.titulo }}</h4>
 
-        <form class="form_question" @submit.prevent="submitFormFinal()">
-            <label v-for="option in question?.opcoes" :key="option.id" class="option">
-                <input type="checkbox" 
-                    :checked="isCheckd(option.analysisEnum)"
-                    :disabled="isDisabled(option.analysisEnum)"
-                    @change="toggleOption(option.analysisEnum)" 
-                />
-                <span>
-                    {{ option.text }}
-                </span>
-            </label>
-            <div>
-                <button 
-                    type="button"
-                    class="exit_btn"
-                    @click="handleRetry()"
-                    v-if="currentId !== 1"
-                >
-                    Voltar
-                </button>
+            <form class="form_question" @submit.prevent="submitFormFinal()">
+                <label v-for="option in question?.opcoes" :key="option.id" class="option">
+                    <input type="checkbox" :checked="isCheckd(option.analysisEnum)"
+                        :disabled="isDisabled(option.analysisEnum)" @change="toggleOption(option.analysisEnum)" />
+                    <span>
+                        {{ option.text }}
+                    </span>
+                </label>
+                <div>
+                    <button type="button" class="exit_btn" @click="handleRetry()" v-if="currentId !== 1">
+                        Voltar
+                    </button>
 
-                <button 
-                    type="button"
-                    class="play_btn"
-                    @click="handleSubmitForm()"
-                    v-if="currentId !== questions.length"
-                >
-                    Seguir
-                </button>
+                    <button type="button" class="play_btn" @click="handleSubmitForm()"
+                        v-if="currentId !== questions.length">
+                        Seguir
+                    </button>
 
-                <button 
-                    type="submit"
-                    class="play_btn"
-                    v-if="currentId === questions.length"
-                >
-                    Finalizar
-                </button>
-            </div>
-        </form>
+                    <button type="submit" class="play_btn" v-if="currentId === questions.length">
+                        Finalizar
+                    </button>
+                </div>
+            </form>
 
-    </div>
+        </div>
+    </Transition>
 </template>
 
 <script setup lang="ts">
@@ -58,32 +44,44 @@ const { questions, currentId, responses } = storeToRefs(testStore)
 
 const question = computed(() => { return questions.value[currentId.value - 1] });
 
-const response = computed(() => { return responses.value[currentId.value -1]?.responses || [] });
+const response = computed(() => { return responses.value[currentId.value - 1]?.responses || [] });
+
+const openQuestion = ref(true);
+
+const closeOpenQuestion = () => {
+    openQuestion.value = false;
+
+    setInterval(() => {
+        openQuestion.value = true;
+    }, 300)
+}
 
 const isCheckd = (value: AnalysisEnum): boolean => {
-     return response.value.includes(value);
+    return response.value.includes(value);
 }
 
 const isDisabled = (value: AnalysisEnum): boolean => {
-  return ( response.value.length >= 2 && !response.value.includes(value))
+    return (response.value.length >= 2 && !response.value.includes(value))
 }
 
 const toggleOption = (value: AnalysisEnum) => {
-  testStore.toggleResposta(currentId.value, value)
+    testStore.toggleResposta(currentId.value, value)
 }
 
 const handleSubmitForm = () => {
-  if (response.value.length !== 2) {
-    alert("necessário marcar 2 campos para resposta");
-    return;
-  }
-  else{
-    testStore.avancar();
-  }
+    if (response.value.length !== 2) {
+        alert("necessário marcar 2 campos para resposta");
+        return;
+    }
+    else {
+        testStore.avancar();
+    }
+    closeOpenQuestion();
 }
 
 const handleRetry = () => {
     testStore.voltar();
+    closeOpenQuestion();
 }
 
 const submitFormFinal = () => {
@@ -142,7 +140,7 @@ const submitFormFinal = () => {
             }
         }
 
-        div{
+        div {
             display: flex;
             justify-content: space-between;
             width: 100%;

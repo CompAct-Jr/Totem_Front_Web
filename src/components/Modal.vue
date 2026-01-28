@@ -28,10 +28,6 @@
         emit('close');
     }
 
-    const handleSubmitForm = ()=>{
-
-    }
-
 </script>
 
 <style lang="scss">
