@@ -1,7 +1,8 @@
 <template>
-    <Transition name="fade" appear>
+    <Transition name="bounce" appear>
         <InfoBox v-if="estado === TesteEstado.CADASTRO && !isModalActive">
             <h2>Encontre sua vocação. Comece sua jornada aqui.</h2>
+            <img src="/img1.jpg" alt="imagem do teste" class="img_test"/>
              <p class="info_modal">
                 Olá! Bem-vindo(a) ao Teste Vocacional do Totem. Sabemos que decidir o futuro é
                 um grande passo, e estamos aqui para apoiar você. Este teste rápido, de
@@ -9,8 +10,6 @@
                 conectando você com áreas de estudo que têm tudo a ver com o seu perfil.
                 Não há respostas certas ou erradas. O mais importante é ser sincero(a). Ao final,
                 você receberá um resultado personalizado para guiar sua decisão.
-                Para começarmos, preencha seus dados abaixo. Assim, podemos enviar seu
-                resultado e dicas valiosas diretamente para você!
             </p>
             <button class="play_btn" @click="abrirModalCadastro()">
                 <span>Começar Agora</span>
@@ -116,5 +115,9 @@ h2{
     text-align: center;
     color: $primary_7;
     font-size: 1.3rem;
+}
+
+.img_test{
+    width: 40%;
 }
 </style>

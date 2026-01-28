@@ -41,7 +41,7 @@ const { estado, usuario} = storeToRefs(testeStore);
     padding: 8px;
     @include centralizar_flex;
     gap: 16px;
-    min-height: 10vh;
+    height: 10vh;
 
 
     div {
