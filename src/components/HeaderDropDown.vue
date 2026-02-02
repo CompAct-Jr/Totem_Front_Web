@@ -48,7 +48,6 @@ const toggleMenu = () => {
 }
 
 const resetar = () => {
-  alert('tem certeza?');
   testeStore.resetar();
   testeStore.removerUsuario;
 }

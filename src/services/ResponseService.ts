@@ -61,4 +61,15 @@ export class ResponseService {
     return result;
 }
 
+// pegar os 3 maiores valores
+  static getTop3Responses(): AnalysisEnum[] {
+    const calculated = this.getResponseCalculed();
+
+    const sorted = Object.entries(calculated)
+      .sort(([, a], [, b]) => b - a)
+      .slice(0, 3)
+      .map(([key]) => key as AnalysisEnum);
+
+    return sorted;
+  }
 }
